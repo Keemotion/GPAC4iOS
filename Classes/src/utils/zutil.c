@@ -297,6 +297,10 @@ extern voidp  gf_calloc OF((uInt items, uInt size));
 extern void   free   OF((voidpf ptr));
 #endif
 
+void *gf_malloc(size_t size);
+void gf_free(void *ptr);
+void *gf_calloc(size_t num, size_t size_of);
+
 voidpf zcalloc (opaque, items, size)
     voidpf opaque;
     unsigned items;
