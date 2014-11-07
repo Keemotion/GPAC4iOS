@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "GPAC4iOS"
-  s.version = "0.1.0"
+  s.version = "0.2.0"
   s.summary = "GPAC4iOS is the libgpac library distributed as a Pod."
   s.description = <<-DESC
       GPAC4iOS is the [libgpac library][1] packaged for iOS as a Pod. It is preconfigured and tested to do a single task: create a MP4 file from a raw H.264 and an audio track. 
