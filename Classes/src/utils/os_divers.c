@@ -64,6 +64,9 @@
 #include <errno.h>
 #endif
 
+#ifndef _WIN32_WCE && WIN32
+#include "internal.h"
+#endif
 
 #define SLEEP_ABS_SELECT		1
 
@@ -407,12 +410,10 @@ GF_Err gf_move_file(const char *fileName, const char *newFileName)
 	/* success if != 0 */
 	return (MoveFile(fileName, newFileName) == 0 ) ? GF_IO_ERR : GF_OK;
 #else
-	/* success is == 0 */
-	char cmd[1024];
+	/* success is bool */
 	if (!fileName || !newFileName)
 		return GF_IO_ERR;
-	snprintf(cmd, sizeof(cmd), "mv '%s' '%s' > /dev/null 2>&1", fileName, newFileName);
-	return ( system(cmd) == 0) ? GF_OK : GF_IO_ERR;
+	return move_file(fileName, newFileName) ? GF_OK : GF_IO_ERR;
 #endif
 }
 
